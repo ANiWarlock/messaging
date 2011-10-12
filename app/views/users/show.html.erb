@@ -1,0 +1,33 @@
+<h1>
+  <b>Name:</b>
+ <%= link_to @user.name, @user %>
+
+</h1>
+
+<%= link_to 'Back', users_path %>
+
+ <%= render 'shared/new' %>
+
+<% @post.each do |post| -%>
+<% if (post.user_from==current_user.id && post.user_to==@user.id)%>
+ <%= current_user.name %> to <%= @user.name %>
+
+
+<br/>
+<%= post.content %><br />
+<%= post.created_at %><hr />
+<%end%>
+
+<% if (post.user_from==@user.id && post.user_to==current_user.id)%>
+ <%= @user.name %> to <%= current_user.name %>
+    <br/>
+    <%= post.content %><br />
+<%= post.created_at %>
+
+
+ <hr /><% end %>
+ <% end %>
+
+
+
+<%= link_to 'Back', users_path %>

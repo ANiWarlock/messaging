@@ -1,0 +1,15 @@
+<h1>Mail</h1>         <%= link_to 'Back', users_path %> <br/> <br>
+
+<% @post.each do |post| -%>
+<% if (post.user_to==current_user.id)%>
+
+ <%= link_to User.find(post.user_from).name, user_path(User.find(post.user_from))  %>
+
+        to <%= current_user.name %>
+    <br/>
+    <%= post.content %><br />
+<%= post.created_at %>
+
+
+ <hr /><% end %>
+ <% end %>
